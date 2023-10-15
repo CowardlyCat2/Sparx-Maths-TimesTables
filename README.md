@@ -25,7 +25,7 @@ Pynput
 ```bash
 pip install pynput
 ```
-Setting Up
+**Setting Up and Use**
 
 First take a screenshot of the first question of the section that you are doing. Then make it full screen on the screen that you will be using. (You will need to re do this each time you do a diffrent thing of it, such as one config for stickers and another one for 100 club check)
 ![Alt text](https://github.com/CowardlyCat2/quiz-website/blob/gh-pages/chrome_pyiHg65aWY.png?raw=true)
