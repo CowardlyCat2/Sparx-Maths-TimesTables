@@ -1,5 +1,5 @@
 # Sparx-Maths-TimesTables
-This means that you just need to click s on your keyboard and it will peform the calculation. Currently it can only do multiplication.
+This means that you just need to click s on your keyboard and it will peform the calculation. At the moment it can now do all of the calculations. It however can't do the one where it tells you a calculation and you need to remember it.
 
 **Installation**
 
