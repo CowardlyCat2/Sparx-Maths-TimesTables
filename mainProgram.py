@@ -3,16 +3,16 @@ import easyocr
 from pynput import keyboard
 
 #choices for filename
-FILENAME = "StickerCollection.CSV"
+FILENAME = "games.csv"
 #FILENAME = "100 club check.csv"
-#FILENAME = "tableToppers.csv"
 
-reader = easyocr.Reader(['en']) # this needs to run only once to load the model into memory
+reader = easyocr.Reader(['en'])
 
 #makes the list for data
 file = open(FILENAME,"r")
 
 list = []
+divideVaues = ["+","#"]
 
 for x in file:
 
@@ -21,6 +21,8 @@ for x in file:
     value[-2] = int(value[-2])
 
     list.append(value)
+
+file.close()
 
 x1 = list[12][1]
 x2 = list[12][2]
@@ -42,12 +44,32 @@ def press_callback(key):
 
         result = result.replace("= ?","")
         result = result.replace("=?","")
+        result = result.replace("=","")
         result = result.replace("*"," ")
         result = result.split()
 
+        for x in range(2):
+            result.append("")
         print(result)
 
-        answer = str((int(result[0])*int(result[1])))
+        if result[0] == "?" and (result[1] not in divideVaues):
+            answer = str(int(int(result[2])/int(result[1])))
+
+        elif result[1] in divideVaues:
+            answer = str(int(int(result[0])/int(result[2])))
+
+
+        elif result[1] == "?" and (result[1] not in divideVaues):
+            answer = str(int(result[2])/int(result[0]))
+
+        elif result[0] == "?" and (result[1] in divideVaues):
+            answer = str(int(int(result[3])/int(result[2])))
+        elif result[2] == "?" and (result[1] not in divideVaues):
+            answer = str(int(int(result[3])/int(result[0])))
+
+        
+        else:
+            answer = str((int(result[0])*int(result[1])))
 
         print(answer)
 
@@ -65,4 +87,3 @@ def press_callback(key):
 l = keyboard.Listener(on_press=press_callback)
 l.start()
 l.join()
-
